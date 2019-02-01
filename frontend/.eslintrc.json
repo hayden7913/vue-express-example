@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "airbnb-base",
+    "plugin:vue/recommended"
+  ],
+  "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+          "jsx": true
+      }
+  },
+  "rules": {
+      "semi": 2,
+      "vue/v-bind-style": "off",
+      "vue/v-on-style": "off",
+      "import/no-unresolved": "off"
+  }
+}

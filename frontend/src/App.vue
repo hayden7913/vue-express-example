@@ -1,22 +1,23 @@
 <template>
-  <div class="app-container">
-    <SwitchControl />
-  </div>
+  <v-app class="app-container">
+    <HeaterControlPanel />
+  </v-app>
 </template>
 
 <script>
-import SwitchControl from './components/SwitchControl'
+import HeaterControlPanel from './components/HeaterControlPanel';
 
 export default {
   name: 'App',
   components: {
-    SwitchControl
+    HeaterControlPanel
   },
-}
+};
 </script>
 
 <style>
 .app-container {
-  margin-top: 60px;
+  padding-top: 60px;
+  padding-left: 20vw;
 }
 </style>

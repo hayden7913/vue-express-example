@@ -1,33 +1,46 @@
 <template>
   <div class="switch-control">
     <div class="switch-control-col switch-control-col-left">
-      <div class="switch-control-label">Power</div>
+      <div class="switch-control-label">
+        Power
+      </div>
     </div>
     <div class="switch-control-col switch-control-col-right">
-      <div class="switch control-message">OFF</div>
-      <div class="switch-control-switch">switch</div>
+      <div
+        class="switch control-message"
+      >
+        OFF
+      </div>
+      <div class="switch-control-switch">
+        <BaseSwitch />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import BaseSwitch from './BaseSwitch';
+
 export default {
   name: 'SwitchControl',
+  components: {
+    BaseSwitch,
+  },
 };
-
 </script>
 
 <style>
 .switch-control {
-  margin-left: 30%;
   display: flex;
   width: 400px;
   padding: 10px;
-  /* border: 1px solid #000; */
+  border: 1px solid silver;
+  align-items: center;
+  height: 75px;
 }
 
-.switch-control div {
-  /* border: 1px solid gray; */
+.switch-control-message {
+  border: 1px solid #000;
 }
 
 .switch-control-col-right {
