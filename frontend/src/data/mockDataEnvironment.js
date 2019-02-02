@@ -24,7 +24,7 @@ export default {
   },
   limits: {
     Heater: {
-      'HIGH-value': '36',
+      'HIGH-value': '88',
       'LOW-value': '32',
     },
   },

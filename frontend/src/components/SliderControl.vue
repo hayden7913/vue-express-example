@@ -1,6 +1,14 @@
+<!-- Returns a Range Slider if an array is supplied for the level prop  -->
+<!-- Returns a normal slider if a scalar is supplied-->
 <template>
-  <SliderControlTemplate v-bind:levelLabel="levelLabel">
+  <SliderControlTemplate v-bind:level-label="levelLabel">
+    <BaseRangeSlider
+      v-if="Array.isArray(level)"
+      v-bind:levels="level"
+      v-on:slider-move="updatePosition"
+    />
     <BaseSlider
+      v-else
       v-bind:value="level"
       v-on:slider-move="updatePosition"
     />
@@ -9,17 +17,19 @@
 
 <script>
 import BaseSlider from './BaseSlider';
+import BaseRangeSlider from './BaseRangeSlider';
 import SliderControlTemplate from './SliderControlTemplate';
 
 export default {
   name: 'SliderControl',
   components: {
     BaseSlider,
+    BaseRangeSlider,
     SliderControlTemplate,
   },
   props: {
     level: {
-      type: Number,
+      type: [Number, Array],
       required: true,
     },
     levelLabelFunc: {

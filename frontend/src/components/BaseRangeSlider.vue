@@ -1,8 +1,8 @@
 <template>
   <v-range-slider
-    v-model="position"
-    v-bind:value="[minVal, maxVal]"
-    v-on:input="$emit('slider-move', position)"
+    v-model="positions"
+    v-bind:value="levels"
+    v-on:input="$emit('slider-move', positions)"
   />
 </template>
 
@@ -10,18 +10,14 @@
 export default {
   name: 'BaseRangeSlider',
   props: {
-    minVal: {
-      type: Number,
-      required: true,
-    },
-    maxVal: {
-      type: Number,
+    levels: {
+      type: Array,
       required: true,
     },
   },
   data() {
     return {
-      position: [this.minVal, this.maxVal],
+      positions: [this.levels[0], this.levels[1]],
     };
   },
 };

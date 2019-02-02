@@ -15,10 +15,11 @@
           v-bind:level-label-func="getSliderLabel"
         />
       </ControlPanelItem>
-      <ControlPanelItem label="Temp ">
-        <RangeSliderControl
-          v-bind:level="level"
-          v-bind:level-label-func="getSliderLabel"
+      <ControlPanelItem label="Temp Range">
+        <!-- Returns a range slider since an array is suplied to the level prop -->
+        <SliderControl
+          v-bind:level="heaterMinMax"
+          v-bind:level-label-func="getTempLabel"
         />
       </ControlPanelItem>
     </BaseCard>
@@ -26,12 +27,11 @@
 </template>
 
 <script>
-import ControlPanel from './ControlPanel';
 import BaseCard from './BaseCard';
+import ControlPanel from './ControlPanel';
 import ControlPanelItem from './ControlPanelItem';
 import PowerControl from './PowerControl';
 import SliderControl from './SliderControl';
-import RangeSliderControl from './RangeSliderControl';
 
 import mockDataEnvironment from '../data/mockDataEnvironment';
 
@@ -42,17 +42,20 @@ export default {
     ControlPanel,
     ControlPanelItem,
     PowerControl,
-    RangeSliderControl,
     SliderControl,
   },
   data() {
     const { state, levels, limits } = mockDataEnvironment;
-
     return {
       powerOn: state.Heater,
       level: Number(levels.Heater.level),
       tempRange: limits.Heater,
     };
+  },
+  computed: {
+    heaterMinMax() {
+      return [this.tempRange['LOW-value'], this.tempRange['HIGH-value']];
+    },
   },
   methods: {
     togglePower() {
@@ -60,6 +63,9 @@ export default {
     },
     getSliderLabel(sliderPos) {
       return `${sliderPos}%`;
+    },
+    getTempLabel(sliderPos) {
+      return `${sliderPos[0]}°C to ${sliderPos[1]}°C`;
     },
   },
 };
