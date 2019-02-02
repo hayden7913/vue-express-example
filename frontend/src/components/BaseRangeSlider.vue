@@ -1,25 +1,27 @@
 <template>
-  <v-slider
+  <v-range-slider
     v-model="position"
-    v-bind:value="value"
-    color="pink"
-    thumb-label
+    v-bind:value="[minVal, maxVal]"
     v-on:input="$emit('slider-move', position)"
   />
 </template>
 
 <script>
 export default {
-  name: 'BaseSlider',
+  name: 'BaseRangeSlider',
   props: {
-    value: {
+    minVal: {
+      type: Number,
+      required: true,
+    },
+    maxVal: {
       type: Number,
       required: true,
     },
   },
   data() {
     return {
-      position: this.value,
+      position: [this.minVal, this.maxVal],
     };
   },
 };

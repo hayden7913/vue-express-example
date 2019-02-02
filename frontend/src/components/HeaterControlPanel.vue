@@ -15,6 +15,12 @@
           v-bind:level-label-func="getSliderLabel"
         />
       </ControlPanelItem>
+      <ControlPanelItem label="Temp ">
+        <RangeSliderControl
+          v-bind:level="level"
+          v-bind:level-label-func="getSliderLabel"
+        />
+      </ControlPanelItem>
     </BaseCard>
   </ControlPanel>
 </template>
@@ -25,6 +31,7 @@ import BaseCard from './BaseCard';
 import ControlPanelItem from './ControlPanelItem';
 import PowerControl from './PowerControl';
 import SliderControl from './SliderControl';
+import RangeSliderControl from './RangeSliderControl';
 
 import mockDataEnvironment from '../data/mockDataEnvironment';
 
@@ -35,6 +42,7 @@ export default {
     ControlPanel,
     ControlPanelItem,
     PowerControl,
+    RangeSliderControl,
     SliderControl,
   },
   data() {

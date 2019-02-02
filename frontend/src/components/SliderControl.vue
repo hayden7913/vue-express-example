@@ -1,24 +1,21 @@
 <template>
-  <div class="slider-control">
-    <div class="slider-control-slider">
-      <BaseSlider
-        v-bind:value="level"
-        v-on:slider-move="updatePosition"
-      />
-    </div>
-    <div class="slider-control-level">
-      {{ levelLabel }}
-    </div>
-  </div>
+  <SliderControlTemplate v-bind:levelLabel="levelLabel">
+    <BaseSlider
+      v-bind:value="level"
+      v-on:slider-move="updatePosition"
+    />
+  </SliderControlTemplate>
 </template>
 
 <script>
 import BaseSlider from './BaseSlider';
+import SliderControlTemplate from './SliderControlTemplate';
 
 export default {
   name: 'SliderControl',
   components: {
     BaseSlider,
+    SliderControlTemplate,
   },
   props: {
     level: {
