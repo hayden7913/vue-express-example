@@ -10,7 +10,7 @@ import HeaterControlPanel from './components/HeaterControlPanel';
 export default {
   name: 'App',
   components: {
-    HeaterControlPanel
+    HeaterControlPanel,
   },
 };
 </script>

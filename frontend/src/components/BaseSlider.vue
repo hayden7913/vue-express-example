@@ -1,7 +1,10 @@
 <template>
   <v-slider
+    v-model="position"
+    v-bind:value="value"
     color="pink"
-    v-bind:value="level.toString()"
+    thumb-label
+    v-on:input="$emit('slider-move', position)"
   />
 </template>
 
@@ -9,9 +12,19 @@
 export default {
   name: 'BaseSlider',
   props: {
-    level: {
+    value: {
       type: Number,
       required: true,
+    },
+  },
+  data() {
+    return {
+      position: this.value,
+    };
+  },
+  methods: {
+    sayHi() {
+      console.log(this.position);
     },
   },
 };

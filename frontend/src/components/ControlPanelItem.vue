@@ -37,5 +37,4 @@ export default {
   flex-direction: row;
   margin-left: auto;
 }
-
 </style>

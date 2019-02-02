@@ -12,6 +12,7 @@
       <ControlPanelItem label="Heater Level">
         <SliderControl
           v-bind:level="level"
+          v-bind:level-label-func="getSliderLabel"
         />
       </ControlPanelItem>
     </BaseCard>
@@ -48,6 +49,9 @@ export default {
   methods: {
     togglePower() {
       this.powerOn = !this.powerOn;
+    },
+    getSliderLabel(sliderPos) {
+      return `${sliderPos}%`;
     },
   },
 };

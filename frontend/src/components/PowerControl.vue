@@ -37,11 +37,6 @@ export default {
       required: true,
     },
   },
-  methods: {
-    sayHi() {
-      console.log('hello');
-    },
-  },
 };
 </script>
 
