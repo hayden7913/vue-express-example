@@ -2,6 +2,7 @@
   <v-range-slider
     v-model="positions"
     v-bind:value="levels"
+    v-bind:color="color"
     v-on:input="$emit('slider-move', positions)"
   />
 </template>
@@ -12,6 +13,10 @@ export default {
   props: {
     levels: {
       type: Array,
+      required: true,
+    },
+    color: {
+      type: String,
       required: true,
     },
   },

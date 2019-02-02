@@ -2,7 +2,7 @@
   <v-slider
     v-model="position"
     v-bind:value="value"
-    color="pink"
+    v-bind:color="color"
     thumb-label
     v-on:input="$emit('slider-move', position)"
   />
@@ -14,6 +14,10 @@ export default {
   props: {
     value: {
       type: Number,
+      required: true,
+    },
+    color: {
+      type: String,
       required: true,
     },
   },

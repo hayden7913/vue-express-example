@@ -1,31 +1,36 @@
 <!-- Returns a Range Slider if an array is supplied for the level prop  -->
 <!-- Returns a normal slider if a scalar is supplied-->
 <template>
-  <SliderControlTemplate v-bind:level-label="levelLabel">
-    <BaseRangeSlider
-      v-if="Array.isArray(level)"
-      v-bind:levels="level"
-      v-on:slider-move="updatePosition"
-    />
-    <BaseSlider
-      v-else
-      v-bind:value="level"
-      v-on:slider-move="updatePosition"
-    />
-  </SliderControlTemplate>
+  <div class="slider-control">
+    <div class="slider-control-slider">
+      <BaseRangeSlider
+        v-if="Array.isArray(level)"
+        v-bind:levels="level"
+        v-bind:color="color"
+        v-on:slider-move="updatePosition"
+      />
+      <BaseSlider
+        v-else
+        v-bind:value="level"
+        v-bind:color="color"
+        v-on:slider-move="updatePosition"
+      />
+    </div>
+    <div class="slider-control-level">
+      {{ levelLabel }}
+    </div>
+  </div>
 </template>
 
 <script>
 import BaseSlider from './BaseSlider';
 import BaseRangeSlider from './BaseRangeSlider';
-import SliderControlTemplate from './SliderControlTemplate';
 
 export default {
   name: 'SliderControl',
   components: {
     BaseSlider,
     BaseRangeSlider,
-    SliderControlTemplate,
   },
   props: {
     level: {
@@ -40,6 +45,7 @@ export default {
   data() {
     return {
       position: this.level,
+      color: 'grey',
     };
   },
   computed: {
@@ -62,8 +68,13 @@ export default {
   align-items: center;
 }
 
-.slider-control-level {
-  margin-left: 20px;
+.slider-control-slider {
+  width: 300px;
 }
 
+.slider-control-level {
+  margin-left: 20px;
+  width: 110px;
+  text-align: center;
+}
 </style>
