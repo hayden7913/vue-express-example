@@ -27,6 +27,8 @@
 </template>
 
 <script>
+
+import { mapState } from 'vuex';
 import BaseCard from './BaseCard';
 import ControlPanel from './ControlPanel';
 import ControlPanelItem from './ControlPanelItem';
@@ -34,6 +36,7 @@ import PowerControl from './PowerControl';
 import SliderControl from './SliderControl';
 
 import mockDataEnvironment from '../data/mockDataEnvironment';
+
 
 export default {
   name: 'HeaterControlPanel',
@@ -53,9 +56,15 @@ export default {
     };
   },
   computed: {
+    ...mapState({
+      environmentState: state => state.environment,
+    }),
     heaterMinMax() {
       return [this.tempRange['LOW-value'], this.tempRange['HIGH-value']];
     },
+  },
+  created() {
+    this.$store.dispatch('fetchEnvironment');
   },
   methods: {
     togglePower() {
@@ -67,6 +76,9 @@ export default {
     getTempLabel(sliderPos) {
       return `${sliderPos[0]} °C\u00A0\u00A0to\u00A0\u00A0${sliderPos[1]} °C`;
     },
+    sayHi() {
+      this.$store.commit('increment');
+    }
   },
 };
 </script>
