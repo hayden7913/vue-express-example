@@ -5,13 +5,13 @@
     <BaseCard>
       <ControlPanelItem label="Power">
         <PowerControl
-          v-bind:power-on="powerOn"
+          v-bind:power-on="heaterPowerOn"
           v-on:toggle-power="togglePower"
         />
       </ControlPanelItem>
       <ControlPanelItem label="Heater Level">
         <SliderControl
-          v-bind:level="level"
+          v-bind:level="heaterLevel"
           v-bind:level-label-func="getSliderLabel"
         />
       </ControlPanelItem>
@@ -27,16 +27,12 @@
 </template>
 
 <script>
-
-import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 import BaseCard from './BaseCard';
 import ControlPanel from './ControlPanel';
 import ControlPanelItem from './ControlPanelItem';
 import PowerControl from './PowerControl';
 import SliderControl from './SliderControl';
-
-import mockDataEnvironment from '../data/mockDataEnvironment';
-
 
 export default {
   name: 'HeaterControlPanel',
@@ -47,24 +43,19 @@ export default {
     PowerControl,
     SliderControl,
   },
-  data() {
-    const { state, levels, limits } = mockDataEnvironment;
-    return {
-      powerOn: state.Heater,
-      level: Number(levels.Heater.level),
-      tempRange: limits.Heater,
-    };
-  },
   computed: {
-    ...mapState({
-      environmentState: state => state.environment,
-    }),
+    ...mapGetters([
+      'heaterPowerOn',
+      'heaterLimits',
+      'heaterLevel',
+    ]),
     heaterMinMax() {
-      return [this.tempRange['LOW-value'], this.tempRange['HIGH-value']];
+      return [this.heaterLimits['LOW-value'], this.heaterLimits['HIGH-value']];
     },
   },
   created() {
-    this.$store.dispatch('fetchEnvironment');
+    this.$store.dispatch('fetchEnvironmentState');
+    console.log(this.$store.getters);
   },
   methods: {
     togglePower() {
@@ -78,7 +69,7 @@ export default {
     },
     sayHi() {
       this.$store.commit('increment');
-    }
+    },
   },
 };
 </script>

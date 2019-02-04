@@ -5,8 +5,8 @@ const app = express();
 const port = 3000;
 
 app.use(cors());
-const environmentData = require('./data/mockDataEnvironment');
+const environmentState = require('./data/mockDataEnvironment');
 
-app.get('/', (req, res) => res.json(environmentData));
+app.get('/', (req, res) => res.json(environmentState));
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

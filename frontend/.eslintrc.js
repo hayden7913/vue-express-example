@@ -7,11 +7,11 @@ module.exports = {
     "plugin:vue/recommended"
   ],
   parserOptions: {
-      "ecmaVersion": 2017,
-      "sourceType": "module",
-      "ecmaFeatures": {
-          "jsx": true
-      }
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+        "jsx": true
+    }
   },
   rules: {
       "semi": 2,

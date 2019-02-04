@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import BaseRangeSlider from './BaseRangeSlider';
-import SliderControlTemplate from './SliderControlTemplate';
+import  BaseRangeSlider from './BaseRangeSlider';
+import  SliderControlTemplate from './SliderControlTemplate';
 
 export default {
   name: 'RangeSliderControl',

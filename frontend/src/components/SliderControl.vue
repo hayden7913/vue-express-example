@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import BaseSlider from './BaseSlider';
-import BaseRangeSlider from './BaseRangeSlider';
+import  BaseSlider from './BaseSlider';
+import  BaseRangeSlider from './BaseRangeSlider';
 
 export default {
   name: 'SliderControl',

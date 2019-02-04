@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import BaseSwitch from './BaseSwitch';
+import  BaseSwitch from './BaseSwitch';
 
 export default {
   name: 'SwitchControl',

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import HeaterControlPanel from './components/HeaterControlPanel';
+import  HeaterControlPanel from './components/HeaterControlPanel';
 
 export default {
   name: 'App',
