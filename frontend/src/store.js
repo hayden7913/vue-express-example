@@ -25,6 +25,8 @@ const reformatByActuator = ({ state, levels, limits }) => ({
   },
 });
 
+// TODO: move to getters file
+const getHeater = state => state.environment.heater;
 
 export default new Vuex.Store({
   state: {
@@ -36,8 +38,12 @@ export default new Vuex.Store({
       state.environment = environment;
     },
     toggleHeaterPower(state) {
-      const { powerOn } = state.environment.heater;
+      const { powerOn } = getHeater(state);
       state.environment.heater.powerOn = !powerOn;
+    },
+    updateHeaterLevel(state, level) {
+      console.log(level);
+      state.environment.heater.level = level;
     },
   },
   actions: {
@@ -52,6 +58,6 @@ export default new Vuex.Store({
     },
   },
   getters: {
-    heater: state => state.environment.heater,
+    heater: getHeater,
   },
 });

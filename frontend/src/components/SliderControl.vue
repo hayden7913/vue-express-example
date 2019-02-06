@@ -7,13 +7,14 @@
         v-if="Array.isArray(level)"
         v-bind:levels="level"
         v-bind:color="color"
-        v-on:slider-move="updatePosition"
+        v-on:slider-move="emitPosition"
       />
+      <!-- v-on:slider-move="emitPosition(position)" -->
       <BaseSlider
         v-else
-        v-bind:value="level"
+        v-bind:value="position"
         v-bind:color="color"
-        v-on:slider-move="updatePosition"
+        v-on:slider-move="emitPosition"
       />
     </div>
     <div class="slider-control-level">
@@ -23,8 +24,8 @@
 </template>
 
 <script>
-import  BaseSlider from './BaseSlider';
-import  BaseRangeSlider from './BaseRangeSlider';
+import BaseSlider from './BaseSlider';
+import BaseRangeSlider from './BaseRangeSlider';
 
 export default {
   name: 'SliderControl',
@@ -42,6 +43,8 @@ export default {
       required: true,
     },
   },
+  // TODO: consider if there is a better design that allows this component not to have state
+  // TODO: remove color from state
   data() {
     return {
       position: this.level,
@@ -54,8 +57,9 @@ export default {
     },
   },
   methods: {
-    updatePosition(pos) {
+    emitPosition(pos) {
       this.position = pos;
+      this.$emit('slider-move', pos);
     },
   },
 };

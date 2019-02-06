@@ -10,9 +10,11 @@
         />
       </ControlPanelItem>
       <ControlPanelItem label="Heater Level">
+        <!-- v-on:slider-move="sayHi" -->
         <SliderControl
           v-bind:level="heaterLevel"
           v-bind:level-label-func="getSliderLabel"
+          v-on:slider-move="updateHeaterLevel"
         />
       </ControlPanelItem>
       <ControlPanelItem label="Temp Range">
@@ -56,12 +58,15 @@ export default {
     this.$store.dispatch('fetchEnvironmentState');
   },
   methods: {
-    ...mapMutations(['toggleHeaterPower']),
+    ...mapMutations(['toggleHeaterPower', 'updateHeaterLevel']),
     getSliderLabel(sliderPos) {
       return `${sliderPos}%`;
     },
     getTempLabel(sliderPos) {
       return `${sliderPos[0]} °C\u00A0\u00A0to\u00A0\u00A0${sliderPos[1]} °C`;
+    },
+    sayHi() {
+      console.log('hola mundo');
     },
   },
 };
