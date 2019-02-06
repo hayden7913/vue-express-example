@@ -6,7 +6,25 @@ import environmentDefaultState from './data/mockDataEnvironment';
 
 Vue.use(Vuex);
 
+// TODO: move this to a constants folder
 const url = 'http://localhost:3000';
+
+const reformatByActuator = ({ state, levels, limits }) => ({
+  air: {
+    powerOn: state.Air,
+  },
+  heater: {
+    powerOn: state.Heater,
+    level: Number(levels.Heater.level),
+    minTemp: limits.Heater['LOW-value'],
+    maxTemp: limits.Heater['HIGH-value'],
+  },
+  lamp: {
+    powerOn: state.Lamp,
+    level: Number(levels.Lamp.level),
+  },
+});
+
 
 export default new Vuex.Store({
   state: {
@@ -14,30 +32,26 @@ export default new Vuex.Store({
     environment: environmentDefaultState,
   },
   mutations: {
-    increment(state) {
-      state.count += 1;
-    },
     loadEnvironment(state, environment) {
       state.environment = environment;
+    },
+    toggleHeaterPower(state) {
+      const { powerOn } = state.environment.heater;
+      state.environment.heater.powerOn = !powerOn;
     },
   },
   actions: {
     // TODO: replace with generic callAPI function
     fetchEnvironmentState({ commit }) {
       axios.get(url)
-        .then((res) => {
-          commit('loadEnvironment', res.data);
+        .then((response) => {
+          const { data } = response;
+          const reformattedState = reformatByActuator(data);
+          commit('loadEnvironment', reformattedState);
         });
     },
   },
   getters: {
-    environmentLevels: state => state.environment.levels,
-    environmentLimits: state => state.environment.limits,
-    environmentState: state => state.environment.state,
-    // heater state
-    heaterPowerOn: (state, getters) => getters.environmentState.Heater,
-    heaterLimits: (state, getters) => getters.environmentLimits.Heater,
-    heaterLevels: (state, getters) => getters.environmentLevels.Heater,
-    heaterLevel: (state, getters) => Number(getters.heaterLevels.level),
+    heater: state => state.environment.heater,
   },
 });

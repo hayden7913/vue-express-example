@@ -1,31 +1,16 @@
 // heater control state
-
 export default {
-  state: {
-    Air: true,
-    Lamp: true,
-    Heater: false,
+  air: {
+    powerOn: false,
   },
-  levels: {
-    Air: {
-      start: 0,
-      stop: 0,
-    },
-    Lamp: {
-      start: 0,
-      stop: 0,
-      level: '66',
-    },
-    Heater: {
-      start: 0,
-      stop: 0,
-      level: '77',
-    },
+  heater: {
+    powerOn: false,
+    level: '66',
+    minTemp: '25',
+    maxTemp: '80',
   },
-  limits: {
-    Heater: {
-      'HIGH-value': '88',
-      'LOW-value': '32',
-    },
+  lamp: {
+    powerOn: false,
+    level: '54',
   },
 };

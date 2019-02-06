@@ -5,8 +5,8 @@
     <BaseCard>
       <ControlPanelItem label="Power">
         <PowerControl
-          v-bind:power-on="heaterPowerOn"
-          v-on:toggle-power="togglePower"
+          v-bind:power-on="heater.powerOn"
+          v-on:toggle-power="toggleHeaterPower"
         />
       </ControlPanelItem>
       <ControlPanelItem label="Heater Level">
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
 import BaseCard from './BaseCard';
 import ControlPanel from './ControlPanel';
 import ControlPanelItem from './ControlPanelItem';
@@ -44,31 +44,24 @@ export default {
     SliderControl,
   },
   computed: {
-    ...mapGetters([
-      'heaterPowerOn',
-      'heaterLimits',
-      'heaterLevel',
-    ]),
+    ...mapGetters(['heater']),
+    heaterLevel() {
+      return Number(this.heater.level);
+    },
     heaterMinMax() {
-      return [this.heaterLimits['LOW-value'], this.heaterLimits['HIGH-value']];
+      return [this.heater.minTemp, this.heater.maxTemp];
     },
   },
   created() {
     this.$store.dispatch('fetchEnvironmentState');
-    console.log(this.$store.getters);
   },
   methods: {
-    togglePower() {
-      this.powerOn = !this.powerOn;
-    },
+    ...mapMutations(['toggleHeaterPower']),
     getSliderLabel(sliderPos) {
       return `${sliderPos}%`;
     },
     getTempLabel(sliderPos) {
       return `${sliderPos[0]} °C\u00A0\u00A0to\u00A0\u00A0${sliderPos[1]} °C`;
-    },
-    sayHi() {
-      this.$store.commit('increment');
     },
   },
 };

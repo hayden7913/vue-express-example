@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import  BaseSwitch from './BaseSwitch';
+import BaseSwitch from './BaseSwitch';
 // TODO: refactor  name to switch control
 export default {
   name: 'PowerControl',
