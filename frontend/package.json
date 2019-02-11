@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "concurrently \"cd ../backend && node dosis.js\" \"vue-cli-service serve\"",
+    "start": "concurrently \"cd ../backend && node dosis.js\" \"NODE_ENV=production vue-cli-service serve\"",
     "lint": "vue-cli-service lint",
     "test": "npm run test:unit || true",
     "test:unit": "vue-cli-service test:unit --watch --verbose=false",

@@ -2,7 +2,12 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
 
+import { ENVIRONMENT_URL } from './constants/ApiConstants';
 import environmentDefaultState from './data/mockDataEnvironment';
+
+console.log(process.NODE_ENV);
+console.log(process.NODE_ENV === 'production');
+console.log(ENVIRONMENT_URL);
 
 Vue.use(Vuex);
 
@@ -49,7 +54,7 @@ export default new Vuex.Store({
   actions: {
     // TODO: replace with generic callAPI function
     fetchEnvironmentState({ commit }) {
-      axios.get(url)
+      axios.get(ENVIRONMENT_URL)
         .then((response) => {
           const { data } = response;
           const reformattedState = reformatByActuator(data);
