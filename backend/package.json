@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "dosis.js",
-  "scripts": {},
   "author": "",
   "license": "ISC",
+  "scripts": {
+    "start": "node dosis.js"
+  },
   "dependencies": {
+    "concurrently": "^4.1.0",
     "cors": "^2.8.5",
     "express": "^4.16.4"
   },

@@ -1,10 +1,10 @@
 <template>
   <v-slider
-    v-model="position"
+    v-model="sliderPosition"
     v-bind:value="value"
     v-bind:color="color"
     thumb-label
-    v-on:input="$emit('slider-move', position)"
+    v-on:input="$emit('slider-move', sliderPosition)"
   />
 </template>
 
@@ -23,7 +23,7 @@ export default {
   },
   data() {
     return {
-      position: this.value,
+      sliderPosition: this.value,
     };
   },
 };

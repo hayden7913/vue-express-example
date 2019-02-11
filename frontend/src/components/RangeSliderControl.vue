@@ -3,14 +3,14 @@
     <BaseRangeSlider
       v-bind:min-val="20"
       v-bind:max-val="80"
-      v-on:slider-move="updatePosition"
+      v-on:slider-move="updateslidersliderPosition"
     />
   </SliderControlTemplate>
 </template>
 
 <script>
-import  BaseRangeSlider from './BaseRangeSlider';
-import  SliderControlTemplate from './SliderControlTemplate';
+import BaseRangeSlider from './BaseRangeSlider';
+import SliderControlTemplate from './SliderControlTemplate';
 
 export default {
   name: 'RangeSliderControl',
@@ -20,18 +20,18 @@ export default {
   },
   data() {
     return {
-      position: 0,
+      slidersliderPosition: 0,
     };
   },
   computed: {
     levelLabel() {
-      return this.levelLabelFunc(this.position);
+      return this.levelLabelFunc(this.slidersliderPosition);
     },
   },
   methods: {
-    updatePosition(pos) {
+    updateslidersliderPosition(pos) {
       console.log(pos);
-      this.position = pos;
+      this.slidersliderPosition = pos;
     },
   },
 };

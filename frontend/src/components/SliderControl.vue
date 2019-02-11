@@ -1,5 +1,5 @@
 <!-- Returns a Range Slider if an array is supplied for the level prop  -->
-<!-- Returns a normal slider if a scalar is supplied-->
+<!-- Returns a normal slider if a scalar is supplid to the level prop -->
 <template>
   <div class="slider-control">
     <div class="slider-control-slider">
@@ -7,14 +7,13 @@
         v-if="Array.isArray(level)"
         v-bind:levels="level"
         v-bind:color="color"
-        v-on:slider-move="emitPosition"
+        v-on:slider-move="emitSliderPosition"
       />
-      <!-- v-on:slider-move="emitPosition(position)" -->
       <BaseSlider
         v-else
-        v-bind:value="position"
+        v-bind:value="sliderPosition"
         v-bind:color="color"
-        v-on:slider-move="emitPosition"
+        v-on:slider-move="emitSliderPosition"
       />
     </div>
     <div class="slider-control-level">
@@ -47,18 +46,18 @@ export default {
   // TODO: remove color from state
   data() {
     return {
-      position: this.level,
+      sliderPosition: this.level,
       color: 'grey',
     };
   },
   computed: {
     levelLabel() {
-      return this.levelLabelFunc(this.position);
+      return this.levelLabelFunc(this.sliderPosition);
     },
   },
   methods: {
-    emitPosition(pos) {
-      this.position = pos;
+    emitSliderPosition(pos) {
+      this.sliderPosition = pos;
       this.$emit('slider-move', pos);
     },
   },

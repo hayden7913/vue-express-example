@@ -10,7 +10,6 @@
         />
       </ControlPanelItem>
       <ControlPanelItem label="Heater Level">
-        <!-- v-on:slider-move="sayHi" -->
         <SliderControl
           v-bind:level="heaterLevel"
           v-bind:level-label-func="getSliderLabel"

@@ -42,7 +42,6 @@ export default new Vuex.Store({
       state.environment.heater.powerOn = !powerOn;
     },
     updateHeaterLevel(state, level) {
-      console.log(level);
       state.environment.heater.level = level;
     },
   },
