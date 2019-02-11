@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+git checkout master &&
+rm -rf backend/dist &&
+cd frontend  &&
+npm run build &&
+cd .. &&
+cp -r frontend/dist backend &&
+git add backend/dist &&
+git commit -m "Updates build for deployment" &&
+git subtree push --prefix backend heroku master 
