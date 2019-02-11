@@ -1,7 +1,7 @@
 console.log('form constants');
 console.log(process.NODE_ENV);
 
-const API_BASE_URL = process.NODE_ENV === 'production'
+const API_BASE_URL = process.NODE_ENV !== 'production'
   ? 'https://vue-express-example.herokuapp.com/'
   : 'http://localhost:3000';
 
