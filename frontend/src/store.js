@@ -5,15 +5,7 @@ import axios from 'axios';
 import { ENVIRONMENT_URL } from './constants/ApiConstants';
 import environmentDefaultState from './data/mockDataEnvironment';
 
-console.log(process.NODE_ENV);
-console.log(process.NODE_ENV === 'production');
-console.log(ENVIRONMENT_URL);
-
 Vue.use(Vuex);
-
-// TODO: move this to a constants folder
-// const url = 'http://localhost:3000/environment';
-const url = 'https://vue-express-example.herokuapp.com/environment';
 
 const reformatByActuator = ({ state, levels, limits }) => ({
   air: {

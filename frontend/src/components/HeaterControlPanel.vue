@@ -3,6 +3,7 @@
     label="Heater"
   >
     <BaseCard>
+      <div id="slider" />
       <ControlPanelItem label="Power">
         <PowerControl
           v-bind:power-on="heater.powerOn"
@@ -29,11 +30,14 @@
 
 <script>
 import { mapGetters, mapMutations } from 'vuex';
+import noUiSlider from 'nouislider';
+
 import BaseCard from './BaseCard';
 import ControlPanel from './ControlPanel';
 import ControlPanelItem from './ControlPanelItem';
 import PowerControl from './PowerControl';
 import SliderControl from './SliderControl';
+
 
 export default {
   name: 'HeaterControlPanel',
@@ -54,7 +58,18 @@ export default {
     },
   },
   created() {
+    console.log('created');
     this.$store.dispatch('fetchEnvironmentState');
+    const slider = document.getElementById('slider');
+
+    noUiSlider.create(slider, {
+      start: [20, 80],
+      connect: true,
+      range: {
+        min: 0,
+        max: 100,
+      },
+    });
   },
   methods: {
     ...mapMutations(['toggleHeaterPower', 'updateHeaterLevel']),

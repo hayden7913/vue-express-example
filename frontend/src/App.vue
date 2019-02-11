@@ -1,16 +1,23 @@
 <template>
   <v-app class="app-container">
+    <Test>
+      <BaseSliderNoUi />
+    </Test>
     <HeaterControlPanel />
   </v-app>
 </template>
 
 <script>
-import  HeaterControlPanel from './components/HeaterControlPanel';
+import HeaterControlPanel from './components/HeaterControlPanel';
+import BaseSliderNoUi from './components/BaseSliderNoUi';
+import Test from './components/Test';
 
 export default {
   name: 'App',
   components: {
+    BaseSliderNoUi,
     HeaterControlPanel,
+    Test,
   },
 };
 </script>
