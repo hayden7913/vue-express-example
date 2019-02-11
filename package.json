@@ -1,6 +1,0 @@
-{
-  "devDependencies": {
-    "babel-plugin-transform-regenerator": "^6.26.0",
-    "babel-polyfill": "^6.26.0"
-  }
-}

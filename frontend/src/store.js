@@ -7,7 +7,7 @@ import environmentDefaultState from './data/mockDataEnvironment';
 Vue.use(Vuex);
 
 // TODO: move this to a constants folder
-const url = 'http://localhost:3000';
+const url = 'http://localhost:3000/environment';
 
 const reformatByActuator = ({ state, levels, limits }) => ({
   air: {

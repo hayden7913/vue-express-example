@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
     "start": "concurrently \"cd ../backend && node dosis.js\" \"vue-cli-service serve\"",
+    "lint": "vue-cli-service lint",
+    "test": "npm run test:unit || true",
     "test:unit": "vue-cli-service test:unit --watch --verbose=false",
-    "test": "npm run test:unit || true"
+    "build": "vue-cli-service build",
+    "deploy": "cp -r dist ../backend" 
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -41,6 +42,9 @@
     "vue-cli-plugin-vuetify": "^0.4.6",
     "vue-template-compiler": "^2.5.21",
     "vuetify-loader": "^1.0.5"
+  },
+  "resolutions": {
+    "terser": "3.14.1"
   },
   "eslintConfig": {
     "root": true,
