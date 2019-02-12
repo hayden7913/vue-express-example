@@ -1,23 +1,22 @@
 <template>
   <v-app class="app-container">
-    <!-- TODO: remove this code  -->
-    <!-- <Test>
-      <BaseSliderNoUi />
-    </Test> -->
     <HeaterControlPanel />
+    <Test>
+      <NoUiSlider />
+    </Test>
   </v-app>
 </template>
 
 <script>
 import HeaterControlPanel from './components/HeaterControlPanel';
-import BaseSliderNoUi from './components/BaseSliderNoUi';
+import NoUiSlider from './components/NoUiSlider';
 import Test from './components/Test';
 
 // TODO: remove this code
 export default {
   name: 'App',
   components: {
-    BaseSliderNoUi,
+    NoUiSlider,
     HeaterControlPanel,
     Test,
   },
