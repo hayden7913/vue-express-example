@@ -28,13 +28,11 @@ export default {
 
 <style>
 .control-panel-wrapper {
-  max-width: 600px;
+  width: 600px;
+  margin: 0 auto;
 }
 .control-panel-label {
   font-size: 1.2em;
   padding-bottom: .7em;
-}
-.control-panel-main {
-  /* padding: .4em; */
 }
 </style>

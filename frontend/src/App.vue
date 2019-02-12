@@ -13,6 +13,7 @@ import HeaterControlPanel from './components/HeaterControlPanel';
 import BaseSliderNoUi from './components/BaseSliderNoUi';
 import Test from './components/Test';
 
+// TODO: remove this code
 export default {
   name: 'App',
   components: {
@@ -26,6 +27,5 @@ export default {
 <style>
 .app-container {
   padding-top: 60px;
-  padding-left: 20vw;
 }
 </style>
