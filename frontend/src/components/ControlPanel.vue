@@ -3,13 +3,20 @@
     <div class="control-panel-label">
       {{ label }}
     </div>
-    <slot class="control-panel-main" />
+    <BaseCard class="control-panel-main">
+      <slot />
+    </BaseCard>
   </div>
 </template>
 
 <script>
+import BaseCard from './BaseCard';
+
 export default {
   name: 'ControlPanel',
+  components: {
+    BaseCard,
+  },
   props: {
     label: {
       type: String,
@@ -22,5 +29,12 @@ export default {
 <style>
 .control-panel-wrapper {
   max-width: 600px;
+}
+.control-panel-label {
+  font-size: 1.2em;
+  padding-bottom: .7em;
+}
+.control-panel-main {
+  /* padding: .4em; */
 }
 </style>

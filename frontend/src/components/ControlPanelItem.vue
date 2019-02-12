@@ -1,23 +1,35 @@
 <template>
-  <div class="cp-item">
-    <div class="cp-item-col cp-item-col-left">
-      <div class="cp-item-label">
-        {{ label }}
+  <div class="cp-item-wrapper">
+    <div class="cp-item">
+      <div class="cp-item-col cp-item-col-left">
+        <div class="cp-item-label">
+          {{ label }}
+        </div>
+      </div>
+      <div class="cp-item-col cp-item-col-right">
+        <slot />
       </div>
     </div>
-    <div class="cp-item-col cp-item-col-right">
-      <slot />
-    </div>
+    <BaseDivdier v-if="includeDivider" />
   </div>
 </template>
 
 <script>
+import BaseDivdier from './BaseDivider';
+
 export default {
   name: 'ControlPanelItem',
+  components: {
+    BaseDivdier,
+  },
   props: {
     label: {
       type: String,
       required: true,
+    },
+    includeDivider: {
+      type: Boolean,
+      default: true,
     },
   },
 };
@@ -26,10 +38,8 @@ export default {
 <style>
 .cp-item {
   display: flex;
-  padding: 10px 20px;
-  margin-bottom: 10px;
+  padding: 1.5em 1.6em;
   align-items: center;
-  height: 50px;
 }
 
 .cp-item-col-right {

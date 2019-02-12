@@ -1,9 +1,10 @@
 <template>
   <v-range-slider
-    v-model="slidersliderPositions"
+    v-model="sliderPositions"
     v-bind:value="levels"
     v-bind:color="color"
-    v-on:input="$emit('slider-move', slidersliderPositions)"
+    thumb-label
+    v-on:input="$emit('slider-move', sliderPositions)"
   />
 </template>
 
@@ -22,7 +23,7 @@ export default {
   },
   data() {
     return {
-      slidersliderPositions: [this.levels[0], this.levels[1]],
+      sliderPositions: [this.levels[0], this.levels[1]],
     };
   },
 };

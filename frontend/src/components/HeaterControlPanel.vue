@@ -2,37 +2,36 @@
   <ControlPanel
     label="Heater"
   >
-    <BaseCard>
-      <div id="slider" />
-      <ControlPanelItem label="Power">
-        <PowerControl
-          v-bind:power-on="heater.powerOn"
-          v-on:toggle-power="toggleHeaterPower"
-        />
-      </ControlPanelItem>
-      <ControlPanelItem label="Heater Level">
-        <SliderControl
-          v-bind:level="heaterLevel"
-          v-bind:level-label-func="getSliderLabel"
-          v-on:slider-move="updateHeaterLevel"
-        />
-      </ControlPanelItem>
-      <ControlPanelItem label="Temp Range">
-        <!-- Returns a range slider since an array is suplied to the level prop -->
-        <SliderControl
-          v-bind:level="heaterMinMax"
-          v-bind:level-label-func="getTempLabel"
-        />
-      </ControlPanelItem>
-    </BaseCard>
+    <div id="slider" />
+    <ControlPanelItem label="Power">
+      <PowerControl
+        v-bind:power-on="heater.powerOn"
+        v-on:toggle-power="toggleHeaterPower"
+      />
+    </ControlPanelItem>
+    <ControlPanelItem label="Heater Level">
+      <SliderControl
+        v-bind:level="heaterLevel"
+        v-bind:level-label-func="getSliderLabel"
+        v-on:slider-move="updateHeaterLevel"
+      />
+    </ControlPanelItem>
+    <ControlPanelItem
+      label="Temp Range"
+      v-bind:include-divider="false"
+    >
+      <!-- Returns a range slider since an array is suplied to the level prop -->
+      <SliderControl
+        v-bind:level="heaterMinMax"
+        v-bind:level-label-func="getTempLabel"
+      />
+    </ControlPanelItem>
   </ControlPanel>
 </template>
 
 <script>
 import { mapGetters, mapMutations } from 'vuex';
-import noUiSlider from 'nouislider';
 
-import BaseCard from './BaseCard';
 import ControlPanel from './ControlPanel';
 import ControlPanelItem from './ControlPanelItem';
 import PowerControl from './PowerControl';
@@ -42,7 +41,6 @@ import SliderControl from './SliderControl';
 export default {
   name: 'HeaterControlPanel',
   components: {
-    BaseCard,
     ControlPanel,
     ControlPanelItem,
     PowerControl,
