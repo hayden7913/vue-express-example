@@ -1,0 +1,9 @@
+Wepack:
+  ☐ webpack creates a dist folder with a bundle 
+  ☐ for deployment, this dist folder is copied to the backend folder
+    ☐ the dist folder is served from node
+
+AJAX:
+  ☐ The server never sends html 
+  ☐ 
+

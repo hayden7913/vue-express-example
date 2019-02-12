@@ -1,7 +1,11 @@
 .DS_Store
 node_modules
 /dist
+
+# todo files
 tasks.todo
+walkthrough.todo
+
 # local env files
 .env.local
 .env.*.local

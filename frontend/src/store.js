@@ -42,6 +42,7 @@ export default new Vuex.Store({
     updateHeaterLevel(state, level) {
       state.environment.heater.level = level;
     },
+    // ...more mutations for updating air and light state
   },
   actions: {
     // TODO: add a handler for errors
