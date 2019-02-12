@@ -1,5 +1,10 @@
 const axios = require('axios');
 
-const url = 'https://jsonplaceholder.typicode.com/todos/1';
-axios.get(url)
-  .then(res => console.log(res.data));
+const url = 'http://localhost:3000/environment';
+
+axios({
+  url,
+  method: 'post',
+  data: JSON.stringify({ message: 'success!' }),
+})
+  .then(() => process.exit());
