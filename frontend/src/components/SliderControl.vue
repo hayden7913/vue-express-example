@@ -26,6 +26,8 @@
 import BaseSlider from './BaseSlider';
 import BaseRangeSlider from './BaseRangeSlider';
 
+const vueGreen = '#4fc08d';
+
 export default {
   name: 'SliderControl',
   components: {
@@ -47,13 +49,15 @@ export default {
   data() {
     return {
       sliderPosition: this.level,
-      color: 'grey',
     };
   },
   computed: {
     levelLabel() {
       return this.levelLabelFunc(this.sliderPosition);
     },
+  },
+  created() {
+    this.color = vueGreen;
   },
   methods: {
     emitSliderPosition(pos) {
