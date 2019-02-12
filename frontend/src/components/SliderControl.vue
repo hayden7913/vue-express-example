@@ -44,7 +44,6 @@ export default {
     },
   },
   // TODO: consider if there is a better design that allows this component not to have state
-  // TODO: remove color from state
   data() {
     return {
       sliderPosition: this.level,

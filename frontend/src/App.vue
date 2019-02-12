@@ -12,7 +12,6 @@ import HeaterControlPanel from './components/HeaterControlPanel';
 import NoUiSlider from './components/NoUiSlider';
 import Test from './components/Test';
 
-// TODO: remove this code
 export default {
   name: 'App',
   components: {

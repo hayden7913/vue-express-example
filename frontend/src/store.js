@@ -44,8 +44,8 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    // TODO: replace with generic callAPI function
     fetchEnvironmentState({ commit }) {
+    // TODO: replace with generic callApi function
       axios.get(ENVIRONMENT_URL)
         .then((response) => {
           const { data } = response;

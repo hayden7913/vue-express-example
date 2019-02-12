@@ -14,7 +14,6 @@
       </span>
     </div>
     <div class="power-control-switch">
-      <!-- refactor to use on  -->
       <BaseSwitch
         v-bind:switch-on="powerOn"
         v-bind:color="color"
@@ -28,7 +27,7 @@
 import BaseSwitch from './BaseSwitch';
 import { COLOR_PRIMARY } from '../constants/StyleConstants';
 
-// TODO: refactor  name to switch control
+// TODO: refactor name to switch control
 export default {
   name: 'PowerControl',
   components: {
@@ -59,8 +58,8 @@ export default {
 .power-control-state {
   width: 30px;
 }
-/* TODO: refactor colors with vars */
-/* TODO: use nesting */
+/* TODO: create descriptive scss variables for colors */
+/* TODO: refactor to use scss nesting */
 .power-control-state.is-on {
   color: #4fc08d;
 }
