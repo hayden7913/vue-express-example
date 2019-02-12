@@ -18,10 +18,4 @@ app.get('/environment', (req, res) => {
   res.json(environmentState);
 });
 
-app.post('/environment', (req) => {
-  const updatedState = req.body;
-  console.log(updatedState, 'hello');
-  // save new state to Mongo
-});
-
 app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
