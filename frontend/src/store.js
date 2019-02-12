@@ -2,8 +2,18 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 import callApi from './utils/ApiUtils';
-import { ENVIRONMENT_URL } from './constants/ApiConstants';
 import environmentDefaultState from './data/mockDataEnvironment';
+import { ENVIRONMENT_URL } from './constants/ApiConstants';
+
+import {
+  LOAD_ENVIRONMENT,
+  UPDATE_HEATER_LEVEL,
+  TOGGLE_HEATER_POWER,
+} from './constants/MutationTypes';
+
+import {
+  FETCH_ENVIRONMENT_STATE,
+} from './constants/ActionTypes';
 
 Vue.use(Vuex);
 
@@ -32,25 +42,25 @@ export default new Vuex.Store({
     environment: environmentDefaultState,
   },
   mutations: {
-    loadEnvironment(state, environment) {
+    [LOAD_ENVIRONMENT](state, environment) {
       state.environment = environment;
     },
-    toggleHeaterPower(state) {
+    [TOGGLE_HEATER_POWER](state) {
       const { powerOn } = getHeater(state);
       state.environment.heater.powerOn = !powerOn;
     },
-    updateHeaterLevel(state, level) {
+    [UPDATE_HEATER_LEVEL](state, level) {
       state.environment.heater.level = level;
     },
     // ...more mutations for updating air and light state
   },
   actions: {
     // TODO: add a handler for errors
-    fetchEnvironmentState({ commit }) {
+    [FETCH_ENVIRONMENT_STATE]({ commit }) {
       callApi(ENVIRONMENT_URL)
         .then((data) => {
           const reformattedState = reformatByActuator(data);
-          commit('loadEnvironment', reformattedState);
+          commit(LOAD_ENVIRONMENT, reformattedState);
         });
     },
   },

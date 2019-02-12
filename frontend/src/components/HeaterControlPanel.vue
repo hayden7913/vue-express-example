@@ -6,14 +6,14 @@
     <ControlPanelItem label="Power">
       <PowerControl
         v-bind:power-on="heater.powerOn"
-        v-on:toggle-power="toggleHeaterPower"
+        v-on:toggle-power="TOGGLE_HEATER_POWER"
       />
     </ControlPanelItem>
     <ControlPanelItem label="Heater Level">
       <SliderControl
         v-bind:level="heaterLevel"
         v-bind:level-label-func="getSliderLabel"
-        v-on:slider-move="updateHeaterLevel"
+        v-on:slider-move="UPDATE_HEATER_LEVEL"
       />
     </ControlPanelItem>
     <ControlPanelItem
@@ -32,11 +32,19 @@
 <script>
 import { mapGetters, mapMutations } from 'vuex';
 
+import {
+  UPDATE_HEATER_LEVEL,
+  TOGGLE_HEATER_POWER,
+} from '@/constants/MutationTypes';
+
+import {
+  FETCH_ENVIRONMENT_STATE,
+} from '@/constants/ActionTypes';
+
 import ControlPanel from './ControlPanel';
 import ControlPanelItem from './ControlPanelItem';
 import PowerControl from './PowerControl';
 import SliderControl from './SliderControl';
-
 
 export default {
   name: 'HeaterControlPanel',
@@ -56,10 +64,10 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch('fetchEnvironmentState');
+    this.$store.dispatch(FETCH_ENVIRONMENT_STATE);
   },
   methods: {
-    ...mapMutations(['toggleHeaterPower', 'updateHeaterLevel']),
+    ...mapMutations([TOGGLE_HEATER_POWER, UPDATE_HEATER_LEVEL]),
     getSliderLabel(sliderPos) {
       return `${sliderPos}%`;
     },
