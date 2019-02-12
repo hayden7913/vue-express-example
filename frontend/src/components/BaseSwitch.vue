@@ -1,7 +1,7 @@
 <template>
   <v-switch
     v-model="isOn"
-    color="success"
+    v-bind:color="color"
     v-on:change="$emit('handle-change')"
   />
 </template>
@@ -12,6 +12,10 @@ export default {
   props: {
     switchOn: {
       type: Boolean,
+      required: true,
+    },
+    color: {
+      type: String,
       required: true,
     },
   },

@@ -17,6 +17,7 @@
       <!-- refactor to use on  -->
       <BaseSwitch
         v-bind:switch-on="powerOn"
+        v-bind:color="color"
         v-on:handle-change="$emit('toggle-power')"
       />
     </div>
@@ -25,6 +26,8 @@
 
 <script>
 import BaseSwitch from './BaseSwitch';
+import { COLOR_PRIMARY } from '../constants/StyleConstants';
+
 // TODO: refactor  name to switch control
 export default {
   name: 'PowerControl',
@@ -36,6 +39,9 @@ export default {
       type: Boolean,
       required: true,
     },
+  },
+  created() {
+    this.color = COLOR_PRIMARY;
   },
 };
 </script>
@@ -56,7 +62,7 @@ export default {
 /* TODO: refactor colors with vars */
 /* TODO: use nesting */
 .power-control-state.is-on {
-  color: green;
+  color: #4fc08d;
 }
 
 .power-control-state.is-off {

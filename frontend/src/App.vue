@@ -1,8 +1,9 @@
 <template>
   <v-app class="app-container">
-    <Test>
+    <!-- TODO: remove this code  -->
+    <!-- <Test>
       <BaseSliderNoUi />
-    </Test>
+    </Test> -->
     <HeaterControlPanel />
   </v-app>
 </template>

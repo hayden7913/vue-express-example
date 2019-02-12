@@ -58,18 +58,7 @@ export default {
     },
   },
   created() {
-    console.log('created');
     this.$store.dispatch('fetchEnvironmentState');
-    const slider = document.getElementById('slider');
-
-    noUiSlider.create(slider, {
-      start: [20, 80],
-      connect: true,
-      range: {
-        min: 0,
-        max: 100,
-      },
-    });
   },
   methods: {
     ...mapMutations(['toggleHeaterPower', 'updateHeaterLevel']),
@@ -82,6 +71,3 @@ export default {
   },
 };
 </script>
-
-<style>
-</style>

@@ -25,8 +25,7 @@
 <script>
 import BaseSlider from './BaseSlider';
 import BaseRangeSlider from './BaseRangeSlider';
-
-const vueGreen = '#4fc08d';
+import { COLOR_PRIMARY } from '../constants/StyleConstants';
 
 export default {
   name: 'SliderControl',
@@ -57,7 +56,7 @@ export default {
     },
   },
   created() {
-    this.color = vueGreen;
+    this.color = COLOR_PRIMARY;
   },
   methods: {
     emitSliderPosition(pos) {
