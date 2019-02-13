@@ -5,7 +5,7 @@
     <div class="slider-control-slider">
       <BaseRangeSlider
         v-if="Array.isArray(level)"
-        v-bind:levels="level"
+        v-bind:levels="sliderPosition"
         v-bind:color="color"
         v-on:slider-move="emitSliderPosition"
       />
@@ -53,6 +53,9 @@ export default {
     levelLabel() {
       return this.levelLabelFunc(this.sliderPosition);
     },
+  },
+  updated() {
+    console.log(this.level);
   },
   created() {
     this.color = COLOR_PRIMARY;

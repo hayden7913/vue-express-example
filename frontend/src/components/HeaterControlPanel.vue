@@ -57,7 +57,7 @@ export default {
   computed: {
     ...mapGetters(['heater']),
     heaterLevel() {
-      return Number(this.heater.level);
+      return this.heater.level;
     },
     heaterMinMax() {
       return [this.heater.minTemp, this.heater.maxTemp];

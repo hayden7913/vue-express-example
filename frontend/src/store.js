@@ -24,8 +24,8 @@ const reformatByActuator = ({ state, levels, limits }) => ({
   heater: {
     powerOn: state.Heater,
     level: Number(levels.Heater.level),
-    minTemp: limits.Heater['LOW-value'],
-    maxTemp: limits.Heater['HIGH-value'],
+    minTemp: Number(limits.Heater['LOW-value']),
+    maxTemp: Number(limits.Heater['HIGH-value']),
   },
   lamp: {
     powerOn: state.Lamp,
@@ -57,6 +57,7 @@ export default new Vuex.Store({
   actions: {
     // TODO: add a handler for errors
     [FETCH_ENVIRONMENT_STATE]({ commit }) {
+      console.log('calling api');
       callApi(ENVIRONMENT_URL)
         .then((data) => {
           const reformattedState = reformatByActuator(data);
@@ -67,4 +68,5 @@ export default new Vuex.Store({
   getters: {
     heater: getHeater,
   },
+  strict: process.env.NODE_ENV !== 'production',
 });
