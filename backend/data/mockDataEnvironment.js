@@ -17,7 +17,7 @@ module.exports = {
     Heater: {
       start: 0,
       stop: 0,
-      level: '77',
+      level: '75',
     },
   },
   limits: {

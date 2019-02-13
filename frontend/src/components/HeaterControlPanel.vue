@@ -12,8 +12,8 @@
     <ControlPanelItem label="Heater Level">
       <SliderControl
         v-bind:level="heaterLevel"
-        v-bind:level-label-func="getSliderLabel"
-        v-on:slider-move="UPDATE_HEATER_LEVEL"
+        v-bind:label="levelLabel"
+        v-bind:handle-input="UPDATE_HEATER_LEVEL"
       />
     </ControlPanelItem>
     <ControlPanelItem
@@ -23,7 +23,8 @@
       <!-- Returns a range slider since an array is suplied to the level prop -->
       <SliderControl
         v-bind:level="heaterMinMax"
-        v-bind:level-label-func="getTempLabel"
+        v-bind:label="limitLabel"
+        v-bind:handle-input="UPDATE_HEATER_LEVEL"
       />
     </ControlPanelItem>
   </ControlPanel>
@@ -57,23 +58,26 @@ export default {
   computed: {
     ...mapGetters(['heater']),
     heaterLevel() {
-      return this.heater.level;
+      const { level } = this.heater;
+      return level || 0;
     },
     heaterMinMax() {
-      return [this.heater.minTemp, this.heater.maxTemp];
+      const { minTemp, maxTemp } = this.heater;
+      return minTemp && maxTemp
+        ? [minTemp, maxTemp]
+        : [0, 0];
     },
-  },
-  created() {
-    this.$store.dispatch(FETCH_ENVIRONMENT_STATE);
+    levelLabel() {
+      return `${this.heater.level}%`;
+    },
+    limitLabel() {
+      return (
+        `${this.heater.minTemp} °C\u00A0\u00A0to\u00A0\u00A0${this.heater.maxTemp} °C`
+      );
+    },
   },
   methods: {
     ...mapMutations([TOGGLE_HEATER_POWER, UPDATE_HEATER_LEVEL]),
-    getSliderLabel(sliderPos) {
-      return `${sliderPos}%`;
-    },
-    getTempLabel(sliderPos) {
-      return `${sliderPos[0]} °C\u00A0\u00A0to\u00A0\u00A0${sliderPos[1]} °C`;
-    },
   },
 };
 </script>

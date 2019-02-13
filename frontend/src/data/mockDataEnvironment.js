@@ -5,12 +5,12 @@ export default {
   },
   heater: {
     powerOn: false,
-    level: 75,
-    minTemp: 50,
-    maxTemp: 80,
+    level: null,
+    minTemp: null,
+    maxTemp: null,
   },
   lamp: {
     powerOn: false,
-    level: 100,
+    level: null,
   },
 };

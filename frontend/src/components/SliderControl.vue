@@ -5,19 +5,19 @@
     <div class="slider-control-slider">
       <BaseRangeSlider
         v-if="Array.isArray(level)"
-        v-bind:levels="sliderPosition"
+        v-bind:levels="level"
         v-bind:color="color"
-        v-on:slider-move="emitSliderPosition"
+        v-bind:handle-input="handleInput"
       />
       <BaseSlider
         v-else
-        v-bind:value="sliderPosition"
         v-bind:color="color"
-        v-on:slider-move="emitSliderPosition"
+        v-bind:handle-input="handleInput"
+        v-bind:position.sync="position"
       />
     </div>
-    <div class="slider-control-level">
-      {{ levelLabel }}
+    <div class="slider-control-label">
+      {{ position }}
     </div>
   </div>
 </template>
@@ -36,26 +36,21 @@ export default {
   props: {
     level: {
       type: [Number, Array],
-      required: true,
+      default: 0,
     },
-    levelLabelFunc: {
+    label: {
+      type: String,
+      default: '...',
+    },
+    handleInput: {
       type: Function,
       required: true,
     },
   },
-  // TODO: consider if there is a better design that allows this component not to have state
   data() {
     return {
-      sliderPosition: this.level,
+      position: this.level,
     };
-  },
-  computed: {
-    levelLabel() {
-      return this.levelLabelFunc(this.sliderPosition);
-    },
-  },
-  updated() {
-    console.log(this.level);
   },
   created() {
     this.color = COLOR_PRIMARY;
@@ -80,7 +75,7 @@ export default {
   width: 300px;
 }
 
-.slider-control-level {
+.slider-control-label {
   margin-left: 20px;
   width: 110px;
   text-align: center;

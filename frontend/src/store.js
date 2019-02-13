@@ -35,15 +35,17 @@ const reformatByActuator = ({ state, levels, limits }) => ({
 
 // TODO: move to getters file
 const getHeater = state => state.environment.heater;
+const getHasFetched = state => state.hasFetched;
 
 export default new Vuex.Store({
   state: {
-    count: 0,
+    hasFetched: false,
     environment: environmentDefaultState,
   },
   mutations: {
     [LOAD_ENVIRONMENT](state, environment) {
       state.environment = environment;
+      state.hasFetched = true;
     },
     [TOGGLE_HEATER_POWER](state) {
       const { powerOn } = getHeater(state);
@@ -56,8 +58,8 @@ export default new Vuex.Store({
   },
   actions: {
     // TODO: add a handler for errors
+    // TODO: use success and failure mutations instead of LOAD_ENVIRONMENT
     [FETCH_ENVIRONMENT_STATE]({ commit }) {
-      console.log('calling api');
       callApi(ENVIRONMENT_URL)
         .then((data) => {
           const reformattedState = reformatByActuator(data);
@@ -67,6 +69,7 @@ export default new Vuex.Store({
   },
   getters: {
     heater: getHeater,
+    hasFetched: getHasFetched,
   },
   strict: process.env.NODE_ENV !== 'production',
 });

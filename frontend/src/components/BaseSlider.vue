@@ -1,10 +1,10 @@
 <template>
+  <!-- v-on:input="$emit('update:position', $event.target.value)" -->
   <v-slider
-    v-model="sliderPosition"
-    v-bind:value="value"
     v-bind:color="color"
+    v-bind:value="position"
     thumb-label
-    v-on:input="$emit('slider-move', sliderPosition)"
+    v-on:input="handleChange"
   />
 </template>
 
@@ -12,7 +12,7 @@
 export default {
   name: 'BaseSlider',
   props: {
-    value: {
+    position: {
       type: Number,
       required: true,
     },
@@ -20,11 +20,15 @@ export default {
       type: String,
       required: true,
     },
+    handleInput: {
+      type: Function,
+      required: true,
+    },
   },
-  data() {
-    return {
-      sliderPosition: this.value,
-    };
+  methods: {
+    handleChange(val) {
+      this.$emit('update:position', val);
+    },
   },
 };
 </script>
