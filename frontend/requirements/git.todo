@@ -1,0 +1,5 @@
+Git:
+
+☐ We want a root directory that has the .git folder
+☐ We have two folders (dosis_app and dosis_firmware) that have their own .git folder
+☐ Those .git folders need to get merged into the root folder

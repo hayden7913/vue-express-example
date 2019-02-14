@@ -1,10 +1,10 @@
 <template>
-  <!-- v-on:input="$emit('update:position', $event.target.value)" -->
   <v-slider
     v-bind:color="color"
     v-bind:value="position"
     thumb-label
-    v-on:input="handleChange"
+    v-on:input="handleInput"
+    v-on:change="handleChange"
   />
 </template>
 
@@ -20,13 +20,13 @@ export default {
       type: String,
       required: true,
     },
-    handleInput: {
+    handleChange: {
       type: Function,
       required: true,
     },
   },
   methods: {
-    handleChange(val) {
+    handleInput(val) {
       this.$emit('update:position', val);
     },
   },

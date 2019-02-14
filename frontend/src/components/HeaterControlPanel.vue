@@ -13,7 +13,7 @@
       <SliderControl
         v-bind:level="heaterLevel"
         v-bind:label="levelLabel"
-        v-bind:handle-input="UPDATE_HEATER_LEVEL"
+        v-bind:handle-change="UPDATE_HEATER_LEVEL"
       />
     </ControlPanelItem>
     <ControlPanelItem
@@ -24,7 +24,7 @@
       <SliderControl
         v-bind:level="heaterMinMax"
         v-bind:label="limitLabel"
-        v-bind:handle-input="UPDATE_HEATER_LEVEL"
+        v-bind:handle-change="UPDATE_HEATER_LEVEL"
       />
     </ControlPanelItem>
   </ControlPanel>
@@ -32,15 +32,10 @@
 
 <script>
 import { mapGetters, mapMutations } from 'vuex';
-
 import {
   UPDATE_HEATER_LEVEL,
   TOGGLE_HEATER_POWER,
 } from '@/constants/MutationTypes';
-
-import {
-  FETCH_ENVIRONMENT_STATE,
-} from '@/constants/ActionTypes';
 
 import ControlPanel from './ControlPanel';
 import ControlPanelItem from './ControlPanelItem';

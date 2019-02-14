@@ -1,0 +1,6 @@
+As a user I can ...:
+☐ login / logout 
+☐ view a list of reactions
+☐ select an active reaction
+☐ view sensor data (temp, OD)
+☐ control actuators (air, heater, light)

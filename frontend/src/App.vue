@@ -16,8 +16,6 @@ import HeaterControlPanel from './components/HeaterControlPanel';
 import NoUiSlider from './components/NoUiSlider';
 import Test from './components/Test';
 
-console.log(FETCH_ENVIRONMENT_STATE);
-
 export default {
   name: 'App',
   components: {

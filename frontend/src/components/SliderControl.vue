@@ -7,12 +7,12 @@
         v-if="Array.isArray(level)"
         v-bind:levels="level"
         v-bind:color="color"
-        v-bind:handle-input="handleInput"
+        v-bind:handle-change="handleChange"
       />
       <BaseSlider
         v-else
         v-bind:color="color"
-        v-bind:handle-input="handleInput"
+        v-bind:handle-change="handleChange"
         v-bind:position.sync="position"
       />
     </div>
@@ -23,9 +23,9 @@
 </template>
 
 <script>
+import { COLOR_PRIMARY } from '@/constants/StyleConstants';
 import BaseSlider from './BaseSlider';
 import BaseRangeSlider from './BaseRangeSlider';
-import { COLOR_PRIMARY } from '../constants/StyleConstants';
 
 export default {
   name: 'SliderControl',
@@ -42,7 +42,7 @@ export default {
       type: String,
       default: '...',
     },
-    handleInput: {
+    handleChange: {
       type: Function,
       required: true,
     },

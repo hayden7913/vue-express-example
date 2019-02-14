@@ -1,0 +1,11 @@
+Login / Logout:
+☐ Use /users/login
+
+Fetch Actuator State:
+☐ Need to make a new endpoint for this
+
+Update Actuators:
+☐ Use /updateState
+
+Read Sensor Data:
+☐ Use sockets

@@ -2,15 +2,12 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 import callApi from './utils/ApiUtils';
-import environmentDefaultState from './data/mockDataEnvironment';
 import { ENVIRONMENT_URL } from './constants/ApiConstants';
-
 import {
   LOAD_ENVIRONMENT,
   UPDATE_HEATER_LEVEL,
   TOGGLE_HEATER_POWER,
 } from './constants/MutationTypes';
-
 import {
   FETCH_ENVIRONMENT_STATE,
 } from './constants/ActionTypes';
@@ -40,7 +37,21 @@ const getHasFetched = state => state.hasFetched;
 export default new Vuex.Store({
   state: {
     hasFetched: false,
-    environment: environmentDefaultState,
+    environment: {
+      air: {
+        powerOn: false,
+      },
+      heater: {
+        powerOn: false,
+        level: 0,
+        minTemp: 0,
+        maxTemp: 0,
+      },
+      lamp: {
+        powerOn: false,
+        level: 0,
+      },
+    },
   },
   mutations: {
     [LOAD_ENVIRONMENT](state, environment) {
@@ -52,6 +63,7 @@ export default new Vuex.Store({
       state.environment.heater.powerOn = !powerOn;
     },
     [UPDATE_HEATER_LEVEL](state, level) {
+      console.log('from mutation', level);
       state.environment.heater.level = level;
     },
     // ...more mutations for updating air and light state
