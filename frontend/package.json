@@ -35,7 +35,6 @@
     "eslint": "^5.13.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-import ": "^2.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "regenerator-runtime": "^0.13.1",
     "stylus": "^0.54.5",
